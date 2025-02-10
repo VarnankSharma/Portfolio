@@ -18,7 +18,7 @@ const ContactForm = () => {
     setStatus("Sending...");
 
     try {
-      const response = await fetch("http://localhost:5000/send", {
+      const response = await fetch("https://portfolio-kohl-theta-91.vercel.app/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
