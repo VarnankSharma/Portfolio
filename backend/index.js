@@ -8,11 +8,16 @@ const nodemailer = require("nodemailer");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors());
+// ✅ Enable CORS Before Routes
+app.use(cors({
+  origin: "https://portfolio-mzzp.vercel.app", // Allow only your frontend
+  methods: "GET,POST",
+  allowedHeaders: "Content-Type",
+}));
+
 app.use(bodyParser.json());
 
-// MongoDB Connection
+// ✅ MongoDB Connection
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -20,7 +25,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log("MongoDB Connected"))
 .catch((err) => console.error(err));
 
-// Create Schema & Model
+// ✅ Create Schema & Model
 const ContactSchema = new mongoose.Schema({
   name: String,
   email: String,
@@ -30,7 +35,7 @@ const ContactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model("Contact", ContactSchema);
 
-// Nodemailer Transporter
+// ✅ Nodemailer Transporter
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -39,7 +44,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// API Route for Contact Form
+// ✅ API Route for Contact Form
 app.post("/send", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -69,5 +74,5 @@ app.post("/send", async (req, res) => {
   }
 });
 
-// Start Server
+// ✅ Start Server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
