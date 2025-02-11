@@ -18,7 +18,7 @@ const ContactForm = () => {
     setStatus("Sending...");
 
     try {
-      const response = await fetch("https://portfolio-kohl-theta-91.vercel.app/", {
+      const response = await fetch("https://portfolio-kohl-theta-91.vercel.app/send", { // Fixed API Endpoint
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -39,14 +39,24 @@ const ContactForm = () => {
           <h2>DO YOU HAVE A PROJECT TO DISCUSS?</h2>
           <p>GET IN TOUCH 💬</p>
           <h3>CONTACT</h3>
-          <p>varnanksharma1@gmail.com</p>
+          <p><a href="mailto:varnanksharma1@gmail.com">varnanksharma1@gmail.com</a></p>
           <h3>SOCIAL MEDIA</h3>
           <div className="social-icons">
-            <i className="fab fa-linkedin">www.linkedin.com/in/varnank-sharma</i>
-            <i className="fab fa-facebook"></i>
-            <i className="fab fa-instagram"></i>
-            <i className="fab fa-whatsapp"></i>
-            <i className="fas fa-paper-plane"></i>
+            <a href="https://www.linkedin.com/in/varnank-sharma" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-linkedin"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-facebook"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:varnanksharma1@gmail.com">
+              <i className="fas fa-paper-plane"></i>
+            </a>
           </div>
         </div>
         <div className="contact-form">
